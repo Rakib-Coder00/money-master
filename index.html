@@ -12,13 +12,53 @@
 
 <body>
     <div class="container mx-auto">
-        <h1 href="#" class="text-3xl text-emerald-800 text-center my-5">Expense Tracker</h1>
+        <h1 href="#" class="text-3xl font-extrabold text-emerald-800 text-center my-5">Expense Tracker</h1>
 
     <div class="flex flex-wrap justify-between">
         <div class="object-cover w-auto"><img src="src/money.jpg" alt="money.jpg"></div>
-        <div class="bg-zinc-300">
-            <h3>Income</h3>
-            <p>Income : <span></span></p>
+
+        <div class="bg-gray-200 sm:w-96 w-full rounded-2xl text-center">
+
+            <form id="form" class="form p-10">
+
+                <h2 class="text-center text-xl font-bold">Income</h2>
+
+                <div class="form-control my-5">
+                  <label for="Income">Income:</label>
+                  <input class="shadow appearance-none border rounded w-60 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="income" placeholder="Enter Income Amount" />
+                  <!-- <small>Error message</small> -->
+                </div>
+
+                <h2 class="text-center text-xl font-bold">Expenses</h2>
+                <div class="form-control my-5">
+                  <label for="Food">Food:</label>
+                  <input class="shadow appearance-none border rounded w-60 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="email" placeholder="Enter Amount" />
+                  <!-- <small>Error message</small> -->
+                </div>
+
+                <div class="form-control my-5">
+                  <label for="Rent">Rent:</label>
+                  <input class="shadow appearance-none border rounded w-60 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="password" placeholder="Enter Amount" />
+                  <!-- <small>Error message</small> -->
+                </div>
+
+                <div class="form-control my-5">
+                  <label for="Clothes">Clothes:</label>
+                  <input class="shadow appearance-none border rounded w-60 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="password" placeholder="Enter Amount" />
+                  <!-- <small>Error message</small> -->
+                </div>
+
+
+
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline" type="submit">Calculate</button>
+              </form>
+              <p class="font-semibold text-2xl">Total Expenses: <span class="">0</span></p>
+              <p class="font-semibold text-2xl my-3">Balance: <span class="">0</span></p>
+              <label for="Save">Save:</label>
+              <input class="w-12 appearance-none border rounded" type="number"> <span>%</span> 
+              <button class="bg-blue-500 hover:bg-blue-700 py-1 px-4 text-white font-bold rounded focus:outline-none focus:shadow-outline my-2" type="submit">Save</button>
+              <p class="font-semibold text-2xl my-3">Saving Amount: <span class="">0</span></p>
+              <p class="font-semibold text-2xl">Remaining Balance: <span class="">0</span></p>
         </div>
     </div>
     </div>
