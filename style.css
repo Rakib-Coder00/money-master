@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+}
+:root{
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+.form-control.success input{
+    border-color: var(--success-color);
+}
+.form-control.error input{
+    border-color: var(--error-color);
+}
+.form-control{
+    /* position: relative; */
+}
+.form-control small{
+    color: var(--error-color);
+    /* position: absolute; */
+    visibility: hidden;
+}
+.form-control.error small{
+    visibility: visible;
+}
