@@ -12,6 +12,7 @@ const savingAmount = document.getElementById('saving-amount')
 const remainAfterSaving = document.getElementById('remain-amount')
 
 
+// income.value = 0
 // show input Error message =>
 function showError(input, message) {
     const formControl = input.parentElement
@@ -21,7 +22,7 @@ function showError(input, message) {
 }
 
 // Show Input Success =>
-function showSuccess(input,) {
+function showSuccess(input) {
     const formControl = input.parentElement
     formControl.className = 'form-control success'
 }
@@ -69,12 +70,8 @@ form.addEventListener('submit', function (e) {
     else{
         showSuccess(clothe)
     }
+
     // console.log(typeof(income.value));
-})
-
-
-
-calculate.addEventListener('click', function () {
     const incomeAmount = parseInt(income.value)
     const foodAmount = parseInt(food.value)
     const rentAmount = parseInt(rent.value)
@@ -82,18 +79,45 @@ calculate.addEventListener('click', function () {
     const total = foodAmount + rentAmount + clotheAmount
     const remainAmount = incomeAmount - total
     totalExpense.innerText = total
+    // income.value = ''
 
     // remainAmount(food, rent, clothe, income)
     // totalExpense.innerText = totalValue
     
     if (incomeAmount < total) {
-        alert('Expense cant greater than you income')
+        alert('Income Must Be Greater Than Your Expense Amount!')
+    }
+    else if (incomeAmount === null ) {
+        income.value = 80
     }
     else{
         remainBalance.innerText = remainAmount
-        
     }
 })
+
+
+
+// calculate.addEventListener('click', function () {
+//     const incomeAmount = parseInt(income.value)
+//     const foodAmount = parseInt(food.value)
+//     const rentAmount = parseInt(rent.value)
+//     const clotheAmount = parseInt(clothe.value)
+//     const total = foodAmount + rentAmount + clotheAmount
+//     const remainAmount = incomeAmount - total
+//     totalExpense.innerText = total
+//     // income.value = ''
+
+//     // remainAmount(food, rent, clothe, income)
+//     // totalExpense.innerText = totalValue
+    
+//     if (incomeAmount < total) {
+//         alert('Expense cant greater than you income')
+//     }
+//     else{
+//         remainBalance.innerText = remainAmount
+        
+//     }
+// })
 
 
 // Calculate Remain Balance =>
@@ -110,15 +134,21 @@ calculate.addEventListener('click', function () {
 saveBtn.addEventListener('click', function () {
     const savePercentAmount = parseInt(savePercent.value)
     const savingAmountValue = (income.value * savePercentAmount) / 100
-    savingAmount.innerText = savingAmountValue
-
+    
     const incomeAmount = parseInt(income.value)
     const foodAmount = parseInt(food.value)
     const rentAmount = parseInt(rent.value)
     const clotheAmount = parseInt(clothe.value)
     const total = foodAmount + rentAmount + clotheAmount
     const remainAmount = incomeAmount - total
-
+    
     const remainNewBalance = remainAmount - savingAmountValue
     remainAfterSaving.innerText = remainNewBalance
+    
+    if (savingAmountValue > incomeAmount) {
+        alert('Income Must Be Greater Than Your Saving Amount!')
+    }else{
+        savingAmount.innerText = savingAmountValue
+    }
+
 })
