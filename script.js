@@ -84,7 +84,7 @@ calculateBtn.addEventListener('click', function (e) {
 
     // Rent :
     if (rent.value === '') {
-        showError(rent,'Rent amount is required!')
+        showError(rent,'Rent amount is required  !')
     }
 
     else if (rent.value < 0) {
