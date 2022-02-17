@@ -1,5 +1,3 @@
-const form = document.getElementById('form')
-
 // input
 const income = document.getElementById('income')
 const food = document.getElementById('food')
@@ -34,14 +32,14 @@ function showSuccess(input) {
 
 
 // Calculate total balance
-function totalBalance(a, b, c) {
-    let sum = parseInt(a.value) + parseInt(b.value) + parseInt(c.value)
+function totalBalance(first, second, third) {
+    let sum = parseInt(first.value) + parseInt(second.value) + parseInt(third.value)
     return sum
 }
 // Calculate Remain Balance     
 function remainBalance(incomeValue, totalValue) {
-    let final = parseInt(incomeValue.value) - totalValue
-    return final
+    let remain = parseInt(incomeValue.value) - totalValue
+    return remain
 }
     
 // Calculate Event Listener
@@ -51,14 +49,17 @@ calculateBtn.addEventListener('click', function (e) {
     let remainAmount = remainBalance(income, total)
 
     // Error Catch
-    if (parseInt(income.value) < total || parseInt(income.value)< parseInt(food.value) || parseInt(income.value) < parseInt(rent.value)|| parseInt(income.value) < parseInt(clothe.value)) {
+    if (parseInt(income.value) < total || parseInt(income.value)< parseInt(food.value) || parseInt(income.value) < parseInt(food.value)|| parseInt(income.value) < parseInt(clothe.value)) {
     alert('Income Must Be Greater Than Your Expense Amount!')
+    }
+    else if (income.value === '' || food.value === ''|| food.value === ''|| clothe.value ==='') {
+        total = 0
+        remainAmount = 0
     }
     else{
         totalExpense.innerText = total
         balance.innerText = remainAmount
     }
-
     // Income :
     if (income.value === '') {
         showError(income,'Income amount is required!')
@@ -105,39 +106,30 @@ calculateBtn.addEventListener('click', function (e) {
     }
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
 // Saving Event Listener
 saveBtn.addEventListener('click', function () {
-    const savePercentAmount = parseInt(savePercent.value)
-    const savingAmountValue = (income.value * savePercentAmount) / 100
+    let savePercentAmount = parseInt(savePercent.value)
+    let savingAmountValue = (income.value * savePercentAmount) / 100
 
     let total = totalBalance(food, rent, clothe)
 
-    const remainAmount = remainBalance(income, total)
+    let remainAmount = remainBalance(income, total)
     
-    const remainNewBalance = remainAmount - savingAmountValue
+    let remainNewBalance = remainAmount - savingAmountValue
 
-    remainAfterSaving.innerText = remainNewBalance
-    
     // Error Catch
     if (savingAmountValue > parseInt(income.value)) {
         alert('Income Must Be Greater Than Your Saving Amount!')
+
     }else if (savePercentAmount < 0) {
         alert('Field must be a valid number!')
-    }
-    else{
+    }else if (savePercent.value === '' || income.value === '') {
+        savingAmountValue = 0
+        remainNewBalance = 0
+    }else if ( remainAmount < savingAmountValue) {
+        alert("No money left for more saving!")
+    }else{
+        remainAfterSaving.innerText = remainNewBalance
         savingAmount.innerText = savingAmountValue
     }
-
 })
